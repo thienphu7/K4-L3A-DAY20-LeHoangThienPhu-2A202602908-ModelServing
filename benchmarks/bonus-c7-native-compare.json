@@ -1,0 +1,60 @@
+{
+  "revision": "9d77fa17254e1dee4b9e92504c91611a60b1359f",
+  "rows": [
+    {
+      "trial": 1,
+      "native": "OFF",
+      "tok_s": 10.54,
+      "raw_log": "bonus-c7-native-off-trial-1.txt"
+    },
+    {
+      "trial": 1,
+      "native": "ON",
+      "tok_s": 10.6,
+      "raw_log": "bonus-c7-native-on-trial-1.txt"
+    },
+    {
+      "trial": 2,
+      "native": "ON",
+      "tok_s": 10.59,
+      "raw_log": "bonus-c7-native-on-trial-2.txt"
+    },
+    {
+      "trial": 2,
+      "native": "OFF",
+      "tok_s": 10.45,
+      "raw_log": "bonus-c7-native-off-trial-2.txt"
+    }
+  ],
+  "means": {
+    "OFF": 10.495,
+    "ON": 10.594999999999999
+  },
+  "native_over_baseline": 1.0095283468318246,
+  "flags": {
+    "OFF": [
+      "CMAKE_BUILD_TYPE:STRING=Release",
+      "GGML_AVX:BOOL=ON",
+      "GGML_AVX2:BOOL=ON",
+      "GGML_AVX512:BOOL=OFF",
+      "GGML_AVX512_BF16:BOOL=OFF",
+      "GGML_AVX512_VBMI:BOOL=OFF",
+      "GGML_AVX512_VNNI:BOOL=OFF",
+      "GGML_AVX_VNNI:BOOL=OFF",
+      "GGML_BMI2:BOOL=ON",
+      "GGML_NATIVE:BOOL=OFF"
+    ],
+    "ON": [
+      "CMAKE_BUILD_TYPE:STRING=Release",
+      "GGML_AVX:BOOL=OFF",
+      "GGML_AVX2:BOOL=OFF",
+      "GGML_AVX512:BOOL=OFF",
+      "GGML_AVX512_BF16:BOOL=OFF",
+      "GGML_AVX512_VBMI:BOOL=OFF",
+      "GGML_AVX512_VNNI:BOOL=OFF",
+      "GGML_AVX_VNNI:BOOL=OFF",
+      "GGML_BMI2:BOOL=OFF",
+      "GGML_NATIVE:BOOL=ON"
+    ]
+  }
+}

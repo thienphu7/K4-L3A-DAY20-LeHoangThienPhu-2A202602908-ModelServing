@@ -1,0 +1,60 @@
+
+────────────────────────────────────────────────────────────────
+  Prebuilt vs source build (tg128)
+────────────────────────────────────────────────────────────────
+  model   : gemma-4-E2B-it-UD-Q4_K_XL.gguf
+  threads : 6   ngl: 0
+  CPU     : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz  [no vector extensions detected]
+
+  prebuilt: runtime\b10488\llama-bench.exe
+            usage: D:\VinAI\labs\PHASE2\K4-L3A-DAY20-LeHoangThienPhu-2A202602908-ModelServing\runtime\b10488\llama-bench.exe [options]
+  source  : bonus\llama.cpp\build\bin\llama-bench.exe
+            usage: D:\VinAI\labs\PHASE2\K4-L3A-DAY20-LeHoangThienPhu-2A202602908-ModelServing\bonus\llama.cpp\build\bin\llama-bench.exe [options]
+
+  devices : prebuilt ['CUDA0: NVIDIA GeForce GTX 1650 (4095 MiB, 3292 MiB free)']
+            source   ['(none - CPU)']
+  NOTE    : the two binaries do NOT share a backend. Pinning both to
+            -ngl 0 so this measures the compiler, not the accelerator.
+
+  running prebuilt   (-ngl 0) ...
+    8.5 tok/s
+  running source build (-ngl 0) ...
+    9.0 tok/s
+
+# Bonus B1 - Prebuilt vs source build
+
+Host `Windows-AMD64` · CPU `Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz`
+Vector extensions detected: none
+llama.cpp `b10488` both sides · `threads=6` ·
+**both pinned to `ngl=0`** so this isolates the compiler ·
+metric `tg128`, 3 repetitions
+
+> **Backend mismatch, handled.** The prebuilt binary sees
+> `['CUDA0: NVIDIA GeForce GTX 1650 (4095 MiB, 3292 MiB free)']` and your source build sees `(no devices)`.
+> Left at `-ngl 99` this comparison would have measured the accelerator and printed
+> it under a compiler headline, so both sides were pinned to `-ngl 0`.
+
+| Binary | Built for | tg128 (tok/s) | Relative |
+|:--|--:|--:|--:|
+| prebuilt release | runtime CPU dispatch | 8.5 | 1.00x |
+| your source build | this CPU (`-DGGML_NATIVE=ON`) | 9.0 | 1.06x |
+
+On this machine, the source build is **1.06x faster**.
+
+before: 8.5 tok/s (prebuilt release)
+after:  9.0 tok/s (source build, -DGGML_NATIVE=ON)
+speedup: 1.06x
+
+Same source revision, same model, same backend, same `-ngl` -- the only difference
+is what the compiler was allowed to assume about the CPU.
+
+
+
+## Your explanation (required -- replace this line)
+
+_Why did the gap come out this size on your CPU? Tie it to something concrete --
+which extensions your CPU has, and whether this workload is limited by
+instructions or by memory bandwidth. If the prebuilt binary won, explain how that
+is possible._
+
+==> Wrote benchmarks\bonus-build-compare-tg128.md

@@ -1,0 +1,35 @@
+{
+  "source_tag": "b10488",
+  "source_revision": "9d77fa17254e1dee4b9e92504c91611a60b1359f",
+  "compiler": "MSVC 19.44.35229.0",
+  "configuration": "Release",
+  "architecture": "x64",
+  "targets": [
+    "llama-bench"
+  ],
+  "cpu_threads": 6,
+  "benchmark": "tg128",
+  "repetitions_per_invocation": 3,
+  "native_build": "bonus/llama.cpp/build/bin/llama-bench.exe",
+  "baseline_build": "bonus/llama.cpp/build-zbaseline/bin/llama-bench.exe",
+  "native_setting": "ON",
+  "baseline_setting": "OFF",
+  "CUDA": "OFF",
+  "Vulkan": "OFF",
+  "reproduce_build": [
+    "powershell -ExecutionPolicy Bypass -File bonus/build-cpu-windows.ps1 -Native ON",
+    "powershell -ExecutionPolicy Bypass -File bonus/build-cpu-windows.ps1 -Native OFF"
+  ],
+  "source_checkout": "git clone --depth 1 --branch b10488 https://github.com/ggml-org/llama.cpp bonus/llama.cpp",
+  "reproduce_bench": [
+    ".venv/Scripts/python.exe bonus/compare-builds.py --reps 3",
+    ".venv/Scripts/python.exe bonus/compare-cpu-native.py"
+  ],
+  "notes": [
+    "Stop lab servers and finish compilation before benchmarks.",
+    "Set PYTHONUTF8=1 and LAB_N_THREADS=6 before running Python.",
+    "NATIVE=OFF uses AVX2 by default; not scalar-only.",
+    "Only CPU benchmarks; CUDA prebuilt is explicitly pinned to ngl=0.",
+    "Both source builds compiled on this laptop using the same installed compiler."
+  ]
+}
