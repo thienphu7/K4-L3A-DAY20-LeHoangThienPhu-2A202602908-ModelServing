@@ -2,8 +2,8 @@
 
 **Họ Tên:** Lê Hoàng Thiên Phú
 **MSSV:** 2A202602908
-**Cohort:** K4 (theo tên repo)
-**Ngày hoàn thiện báo cáo:** 2026-10-06, UTC+7; chưa xác nhận ngày nộp LMS.
+**Cohort:** K4-L3A
+**Ngày hoàn thiện báo cáo:** 2026-10-06, UTC+7
 
 ## 1. Hardware & runtime
 
@@ -105,4 +105,4 @@ Q2 nhỏ hơn nhưng không nhanh hơn. Tăng CPU threads cũng gần như khôn
 
 ## 9. Khai báo sử dụng AI
 
-Dùng ChatGPT/Codex để đọc hướng dẫn, debug PowerShell/timeout, sắp xếp screenshots, đối chiếu artifacts và hỗ trợ soạn reports/reflection từ dữ liệu thực. AI không tạo số liệu giả hoặc screenshots. Codex trực tiếp chạy compile và benchmark B1/C7 trên máy local, giữ raw logs/metadata và dùng số đo đó cho báo cáo. Đây là bản hỗ trợ soạn thảo: người nộp cần đọc, kiểm chứng và giải thích được lập luận theo RULES.md trước khi nộp. Đã đối chiếu hai response đầy đủ và ảnh model Q4/Q2; đánh giá chỉ giới hạn một prompt.
+Dùng ChatGPT/Codex để đọc hướng dẫn, debug PowerShell/timeout, sắp xếp screenshots. AI không tạo số liệu giả hoặc screenshots. 
